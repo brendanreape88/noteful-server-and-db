@@ -4,4 +4,4 @@ VALUES
     (2, 'Second Folder'),
     (3, 'Third Folder'),
     (4, 'Fourth Folder'),
-    (5, 'Fifth Folder')
+    (5, 'Fifth Folder');

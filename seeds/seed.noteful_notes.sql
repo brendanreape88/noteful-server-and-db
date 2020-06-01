@@ -14,4 +14,4 @@ VALUES
     (12, "Large Note", "Some text", 4),
     (13, "Green Note", "Some text", 5),
     (14, "Orange Note", "Some text", 5),
-    (15, "Purple Note", "Some text", 6)
+    (15, "Purple Note", "Some text", 6);
