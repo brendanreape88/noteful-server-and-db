@@ -15,6 +15,30 @@ foldersRouter
             })
             .catch(next)
     })
+    .post(jsonParser, (req, res, next) => {
+        const { folder_name } = req.body
+        const newFolder = { folder_name }
+
+        for (const [key, value] of Object.entries(newFolder)) {
+            if (value == null) {
+                return res.status(400).json({
+                    error: { message: `Missing '${key}' in request body` }
+                })
+            }
+        }
+
+        FoldersService.insertFolder(
+            req.app.get('db'),
+            newFolder
+        )
+            .then(folder => {
+                res
+                    .status(201)
+                    location(path.posix.join(req.originalUrl, `${folder.id}`))
+                    .json(folder)
+            })
+            .catch(next)
+    })
 
 foldersRouter
     .route('/folder/:folderId')
@@ -37,30 +61,6 @@ foldersRouter
     .get((req, res, next => {
         res.json(res.folder)
     }))
-    .post(jsonParser, (req, res, next) => {
-        const { folder_name } = req.body
-        const newFolder = { folder_name }
-
-        for (const [key, value] of Object.entries(newArticle)) {
-            if (value == null) {
-                return res.status(400).json({
-                    error: { message: `Missing '${key}' in request body` }
-                })
-            }
-        }
-
-        FoldersService.insertFolder(
-            req.app.get('db'),
-            newFolder
-        )
-            .then(folder => {
-                res
-                    .status(201)
-                    location(path.posix.join(req.originalUrl, `${folder.id}`))
-                    .json(folder)
-            })
-            .catch(next)
-    })
     .delete((req, res, next) => {
         FoldersService.deleteFolder(
             req.app.get('db'),
