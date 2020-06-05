@@ -58,6 +58,9 @@ foldersRouter
             })
             .catch(next)
     })
+    /*.get((req, res, next => {
+        res.json(res.folder)
+    }))*/
     .delete((req, res, next) => {
         FoldersService.deleteFolder(
             req.app.get('db'),
