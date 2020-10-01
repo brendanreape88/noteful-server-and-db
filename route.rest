@@ -1,0 +1,37 @@
+GET http://localhost:8000/
+###works!
+
+GET http://localhost:8000/folders
+###works!
+
+POST http://localhost:8000/folders
+content-type: application/json
+
+{
+    "folder_name": "Test Folder"
+}
+###works!
+
+GET http://localhost:8000/folders/1
+###works!
+
+
+GET http://localhost:8000/notes
+###works!
+
+POST http://localhost:8000/notes
+content-type: application/json
+
+{
+    "note_name": "Test folder",
+    "content": "Test content",
+    "modified": "Test date",
+    "folder_id": 1
+}
+###works!
+
+GET http://localhost:8000/notes/1
+###works!
+
+DELETE http://localhost:8000/notes/3
+###works!
