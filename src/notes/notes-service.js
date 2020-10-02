@@ -8,6 +8,7 @@ const NotesService = {
       .into("noteful_notes")
       .returning("*")
       .then((rows) => {
+        console.log(rows);
         return rows[0];
       });
   },

@@ -26,6 +26,7 @@ notesRouter
     const { name, content, modified, folder } = req.body;
     const newNote = { name, content, modified, folder };
 
+    console.log(newNote);
     for (const [key, value] of Object.entries(newNote)) {
       if (value == null) {
         return res.status(400).json({
