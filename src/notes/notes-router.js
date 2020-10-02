@@ -26,13 +26,13 @@ notesRouter
     const { name, content, modified, folder } = req.body;
     const newNote = { name, content, modified, folder };
 
-    // for (const [key, value] of Object.entries(newNote)) {
-    //   if (value == null) {
-    //     return res.status(400).json({
-    //       error: { message: `Missing '${key}' in request body` },
-    //     });
-    //   }
-    // }
+    for (const [key, value] of Object.entries(newNote)) {
+      if (value == null) {
+        return res.status(400).json({
+          error: { message: `Missing '${key}' in request body` },
+        });
+      }
+    }
 
     NotesService.insertNote(req.app.get("db"), newNote)
       .then((note) => {
