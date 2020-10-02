@@ -16,7 +16,7 @@ app.use(cors());
 app.use(helmet());
 
 app.get("/", (req, res) => {
-  res.send("Hello");
+  res.send("Hello Test");
 });
 
 app.use("/notes", notesRouter);
