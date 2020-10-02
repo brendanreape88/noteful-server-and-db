@@ -26,7 +26,6 @@ notesRouter
     const { name, content, modified, folder } = req.body;
     const newNote = { name, content, modified, folder };
 
-    console.log(newNote);
     for (const [key, value] of Object.entries(newNote)) {
       if (value == null) {
         return res.status(400).json({
@@ -35,8 +34,10 @@ notesRouter
       }
     }
 
+    console.log(newNote);
     NotesService.insertNote(req.app.get("db"), newNote)
       .then((note) => {
+        console.log(note);
         res
           .status(201)
           .location(path.posix.join(req.originalUrl, `${note.id}`))
