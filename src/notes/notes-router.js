@@ -9,6 +9,7 @@ const serializeNote = (note) => ({
   id: note.id,
   name: note.note_name,
   content: note.content,
+  modified: note.modified,
   folder: note.folder_id,
 });
 
